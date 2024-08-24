@@ -1,0 +1,164 @@
+# Compiled binary directories
+bin/
+obj/
+out/
+
+# .NET Core & ASP.NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# VS Code settings directory
+.vscode/
+
+# Visual Studio Code
+.vscode/
+.history/
+
+# Visual Studio directories
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.opendb
+
+# Auto-generated files
+Generated\ Files/
+
+# User-specific files
+*.rsuser
+*.user
+*.rsbak
+*.rsk
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+*.lnk
+
+# Rider project files
+.idea/
+
+# macOS
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Unix
+.Trash-*
+.nfs*
+
+# Backup files
+*.bak
+
+# Packaging
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# C# files
+*.exe
+*.dll
+*.pdb
+*.mdb
+*.log
+
+# NuGet Packages
+*.nupkg
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+# NuGet v3's project.json files produces more ignorable files
+*.nuget.props
+*.nuget.targets
+
+# Backup & report files from converting an old project file
+# to a newer Visual Studio version. Backup files are not needed,
+# because we have source control :)
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+ServiceFabricBackup/
+*.Publish.xml
+
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+# Entity Framework
+*.edmx.diagram
+*.edmx.sql
+*.dbmdl
+
+# Azure Resource Manager files
+*.azmresource
+*.azmresourceresource
+
+# Local History for Jetbrains IDEs
+.idea/.idea
+
+# Windows crash dump files
+*.stackdump
+
+# Windows shortcut files
+*.lnk
+
+# Visual Studio Code specific settings
+.vscode/*
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Razor
+*.rzr
+
+# SQL Server
+*.mdf
+*.ldf
+
+# Web server files
+.vspscc
+.vssscc
+
+# JetBrains Rider
+.idea/
+.idea/*
+.idea/**
+
+# Coverage Results
+coverage/
+
+# msbuild generated files
+*.rsp
+*.cache
