@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ReserveiAPI.Objects.Contracts;
 using ReserveiAPI.Objects.DTOs.Entities;
 using ReserveiAPI.Objects.Models.Entities;
 using ReserveiAPI.Repositories.Interfaces;
@@ -16,18 +17,32 @@ namespace ReserveiAPI.Services.Entities
             _userRepository = userRepository;
             _mapper = mapper;
         }
-
         public async Task<IEnumerable<UserDTO>> GetAll()
         {
             var usersModel = await _userRepository.GetAll();
 
-            usersModel.ToList().ForEach(usersModel => usersModel.PasswordUser = "");
+            usersModel.ToList().ForEach(u => u.PasswordUser = "");
             return _mapper.Map<IEnumerable<UserDTO>>(usersModel);
         }
         public async Task<UserDTO> GetById(int id)
         {
             var userModel = await _userRepository.GetById(id);
+
             if (userModel is not null) userModel.PasswordUser = "";
+            return _mapper.Map<UserDTO>(userModel);
+        }
+        public async Task<UserDTO> GetByEmail(string email)
+        {
+            var userModel = await _userRepository.GetByEmail(email);
+
+            if (userModel != null) userModel.PasswordUser = "";
+            return _mapper.Map<UserDTO>(userModel);
+        }
+        public async Task<UserDTO> Login(Login login)
+        {
+            var userModel = await _userRepository.Login(login);
+
+            if (userModel != null) userModel.PasswordUser = "";
             return _mapper.Map<UserDTO>(userModel);
         }
         public async Task Create(UserDTO userDTO)
@@ -42,6 +57,7 @@ namespace ReserveiAPI.Services.Entities
         {
             var userModel = _mapper.Map<UserModel>(userDTO);
             await _userRepository.Update(userModel);
+            
             userDTO.PasswordUser = "";
         }
         public async Task Delete(UserDTO userDTO)
@@ -51,6 +67,6 @@ namespace ReserveiAPI.Services.Entities
 
             userDTO.PasswordUser = "";
         }
-    }
+    } 
 }
 

@@ -45,7 +45,7 @@ namespace ReserveiAPI
             services.AdduserDependencies();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment()) 
             {
