@@ -6,6 +6,7 @@ using ReserveiAPI.Objects.Utilities;
 using System.Dynamic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using static Jose.Compact;
 
 namespace ReserveiAPI.Controllers
 {
@@ -71,7 +72,6 @@ namespace ReserveiAPI.Controllers
             }
         }
         [HttpPost("Create")]
-
         public async Task<ActionResult> Create([FromBody] UserDTO userDTO)
         {
             if (userDTO is null)
@@ -82,7 +82,7 @@ namespace ReserveiAPI.Controllers
                 return BadRequest(_response);
             }
             userDTO.Id = 0;
-            
+
             try
             {
                 dynamic errors = new ExpandoObject();
@@ -93,7 +93,7 @@ namespace ReserveiAPI.Controllers
                 if (hasErrors)
                 {
                     _response.SetConflict();
-                    _response.Message = "Dado(s) com conflitos!";
+                    _response.Message = "Dado(s) com conflito!";
                     _response.Data = errors;
                     return BadRequest(_response);
                 }
@@ -108,19 +108,30 @@ namespace ReserveiAPI.Controllers
                     _response.Data = errors;
                     return BadRequest(_response);
                 }
-                userDTO.PasswordUser = userDTO.PasswordUser.HashPassword();
+
+                // Criptografa a senha
+                var hashedPassword = OperatorUtilitie.HashPassword(userDTO.PasswordUser);
+
+                // Remove o primeiro caractere da senha criptografada
+                if (hashedPassword.Length > 0)
+                {
+                    hashedPassword = hashedPassword.Substring(0);
+                }
+
+                userDTO.PasswordUser = hashedPassword;
+
                 await _userService.Create(userDTO);
 
                 _response.SetSuccess();
-                _response.Message = "Usuário" + userDTO.NameUser + " Cadastrado com sucesso.";
+                _response.Message = "Usuário " + userDTO.NameUser + " cadastrado com sucesso.";
                 _response.Data = userDTO;
                 return Ok(_response);
             }
             catch (Exception ex)
             {
                 _response.SetError();
-                _response.Message = "Não foi possivel cadastrar o Usuário!";
-                _response.Data = new {ErrorMenssage = ex.Message, StackTrace = ex.StackTrace ?? "No stack trace available!"};
+                _response.Message = "Não foi possível cadastrar o Usuário!";
+                _response.Data = new { ErrorMessage = ex.Message, StackTrace = ex.StackTrace ?? "No stack trace available!" };
                 return StatusCode(StatusCodes.Status500InternalServerError, _response);
             }
         }
