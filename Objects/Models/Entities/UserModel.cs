@@ -8,8 +8,8 @@ public class UserModel
     [Column("iduser")]
     public int Id { get; set; }
 
-    [Column("imageprofile")]
-    public string ImageProfile { get; set; }
+    [Column("imageuser")]
+    public string ImageUser { get; set; }
 
     [Column("nameuser")]
     public string NameUser { get; set; }

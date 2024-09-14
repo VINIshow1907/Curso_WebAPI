@@ -10,7 +10,7 @@ namespace ReserveiAPI.Contexts.Builders
         {
             //Builder
             modelBuilder.Entity<UserModel>().HasKey(u => u.Id);
-            modelBuilder.Entity<UserModel>().Property(u => u.ImageProfile);
+            modelBuilder.Entity<UserModel>().Property(u => u.ImageUser);
             modelBuilder.Entity<UserModel>().Property(u => u.NameUser).HasMaxLength(100).IsRequired();
             modelBuilder.Entity<UserModel>().Property(u => u.EmailUser).HasMaxLength(200).IsRequired();
             modelBuilder.Entity<UserModel>().Property(u => u.PasswordUser).HasMaxLength(256).IsRequired();
@@ -24,8 +24,8 @@ namespace ReserveiAPI.Contexts.Builders
                     NameUser = "Master",
                     EmailUser = "master@development.com",
                     PasswordUser = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
-                    PhoneUser = "",
-                    ImageProfile = ""
+                    PhoneUser = "(00) 00000-0000",
+                    ImageUser = ""
                 }
             );
         }

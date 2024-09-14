@@ -1,4 +1,6 @@
-﻿namespace ReserveiAPI.Objects.Contracts
+﻿using ReserveiAPI.Objects.Contracts;
+
+namespace ReserveiAPI.Objects.Contracts
 {
     public class Response
     {

@@ -42,7 +42,7 @@ namespace ReserveiAPI.Services.Entities
         {
             var userModel = await _userRepository.Login(login);
 
-            if (userModel != null) userModel.PasswordUser = "";
+            if (userModel is not null) userModel.PasswordUser = "";
             return _mapper.Map<UserDTO>(userModel);
         }
         public async Task Create(UserDTO userDTO)
@@ -50,7 +50,6 @@ namespace ReserveiAPI.Services.Entities
             var userModel = _mapper.Map<UserModel>(userDTO);
             await _userRepository.Create(userModel);
 
-            userDTO.Id = userModel.Id;
             userDTO.PasswordUser = "";
         }
         public async Task Update(UserDTO userDTO)

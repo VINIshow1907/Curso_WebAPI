@@ -149,7 +149,7 @@ namespace ReserveiAPI.Controllers
 
             try
             {
-                login.Password.HashPassword();
+                login.Password = OperatorUtilitie.HashPassword(login.Password);
                 var userDTO = await _userService.Login(login);
                 if (userDTO is null)
                 {

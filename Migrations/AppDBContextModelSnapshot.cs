@@ -36,10 +36,10 @@ namespace ReserveiAPI.Migrations
                         .HasColumnType("character varying(200)")
                         .HasColumnName("emailuser");
 
-                    b.Property<string>("ImageProfile")
+                    b.Property<string>("ImageUser")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("imageprofile");
+                        .HasColumnName("imageuser");
 
                     b.Property<string>("NameUser")
                         .IsRequired()
@@ -68,10 +68,10 @@ namespace ReserveiAPI.Migrations
                         {
                             Id = 1,
                             EmailUser = "master@development.com",
-                            ImageProfile = "",
+                            ImageUser = "",
                             NameUser = "Master",
                             PasswordUser = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
-                            PhoneUser = ""
+                            PhoneUser = "(00) 00000-0000"
                         });
                 });
 #pragma warning restore 612, 618

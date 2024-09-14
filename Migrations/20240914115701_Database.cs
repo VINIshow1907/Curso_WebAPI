@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ReserveiAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class Database_v1 : Migration
+    public partial class Database : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,7 @@ namespace ReserveiAPI.Migrations
                 {
                     iduser = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    imageprofile = table.Column<string>(type: "text", nullable: false),
+                    imageuser = table.Column<string>(type: "text", nullable: false),
                     nameuser = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     emailuser = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     passworduser = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
@@ -30,8 +30,8 @@ namespace ReserveiAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "users",
-                columns: new[] { "iduser", "emailuser", "imageprofile", "nameuser", "passworduser", "phoneuser" },
-                values: new object[] { 1, "master@development.com", "", "Master", "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f", "" });
+                columns: new[] { "iduser", "emailuser", "imageuser", "nameuser", "passworduser", "phoneuser" },
+                values: new object[] { 1, "master@development.com", "", "Master", "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f", "(00) 00000-0000" });
         }
 
         /// <inheritdoc />
